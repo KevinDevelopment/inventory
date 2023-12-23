@@ -7,7 +7,7 @@ import { Owner } from "../../value-objects/owner"
 import { Location } from "../../value-objects/location"
 import { Comments } from "../../value-objects/comments"
 
-class Inventory {
+export class Inventory {
   private readonly _id: ID
   private _name: Name
   private _amount: Amount
