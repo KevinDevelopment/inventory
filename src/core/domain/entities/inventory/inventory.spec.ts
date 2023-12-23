@@ -402,4 +402,33 @@ describe("Inventory Entity", () => {
 
     expect(createInventoryWithInvalidOwner).toThrowError(new InvalidParamError("comments"))
   })
+
+  test("must return the correct value when the insert methods are called", () => {
+    const inventory = new Inventory(
+      new ID("152525225525"),
+      new Name("kevin ferreira"),
+      new Amount(45665),
+      new SerialNumber("445564-565777"),
+      new TechnicalSpecifications("32 polegadas ips full hd"),
+      new Owner("kevin ferreira"),
+      new Location("são paulo"),
+      new Comments("comentarios aqui")
+    )
+
+    inventory.InsertItemName(new Name("nome alterado"))
+    inventory.enterQuantityInStock(new Amount(99))
+    inventory.insertSerialNumber(new SerialNumber("serial"))
+    inventory.insertTechnicalSpecifications(new TechnicalSpecifications("novas specs"))
+    inventory.insertItemOwner(new Owner("kevin levin"))
+    inventory.enterLocation(new Location("nova localização"))
+    inventory.insertComments(new Comments("novos comentarios"))
+
+    expect(inventory.name.value).toEqual("nome alterado")
+    expect(inventory.amount.value).toEqual(99)
+    expect(inventory.serialNumber.value).toEqual("serial")
+    expect(inventory.technicalSpecifications.value).toEqual("novas specs")
+    expect(inventory.owner.value).toEqual("kevin levin")
+    expect(inventory.location.value).toEqual("nova localização")
+    expect(inventory.comments.value).toEqual("novos comentarios")
+  })
 })
