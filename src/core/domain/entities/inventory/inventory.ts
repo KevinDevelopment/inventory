@@ -59,7 +59,7 @@ export class Inventory {
     return this._technicalSpecifications
   }
 
-  public get Owner(): Owner {
+  public get owner(): Owner {
     return this._owner
   }
 

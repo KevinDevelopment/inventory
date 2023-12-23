@@ -1,14 +1,14 @@
-import { describe, test, expect } from "vitest";
-import { Inventory } from "./inventory";
-import { ID } from "../../value-objects/id";
-import { Name } from "../../value-objects/name";
-import { Amount } from "../../value-objects/amount";
-import { SerialNumber } from "../../value-objects/serial-number";
-import { TechnicalSpecifications } from "../../value-objects/technical-specifications";
-import { Owner } from "../../value-objects/owner";
-import { Location } from "../../value-objects/location";
-import { Comments } from "../../value-objects/comments";
-import { InvalidParamError, MissingParamError } from "../../errors";
+import { describe, test, expect } from "vitest"
+import { Inventory } from "./inventory"
+import { ID } from "../../value-objects/id"
+import { Name } from "../../value-objects/name"
+import { Amount } from "../../value-objects/amount"
+import { SerialNumber } from "../../value-objects/serial-number"
+import { TechnicalSpecifications } from "../../value-objects/technical-specifications"
+import { Owner } from "../../value-objects/owner"
+import { Location } from "../../value-objects/location"
+import { Comments } from "../../value-objects/comments"
+import { InvalidParamError, MissingParamError } from "../../errors"
 
 describe("Inventory Entity", () => {
   test("should return correct id", () => {
@@ -23,7 +23,7 @@ describe("Inventory Entity", () => {
       new Comments("comentarios aqui")
     )
 
-    expect(inventory.id.value).toEqual("152525225525");
+    expect(inventory.id.value).toEqual("152525225525")
   })
 
   test("should throw error if id is not provided", () => {
@@ -40,7 +40,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidId).toThrowError(new MissingParamError("ID"));
+    expect(createInventoryWithInvalidId).toThrowError(new MissingParamError("ID"))
   })
 
   test("should throw error if id is invalid", () => {
@@ -57,7 +57,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidId).toThrowError(new InvalidParamError("ID"));
+    expect(createInventoryWithInvalidId).toThrowError(new InvalidParamError("ID"))
   })
 
   test("should return correct name", () => {
@@ -89,7 +89,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidName).toThrowError(new MissingParamError("name"));
+    expect(createInventoryWithInvalidName).toThrowError(new MissingParamError("name"))
   })
 
   test("should throw error if name is invalid", () => {
@@ -106,7 +106,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidName).toThrowError(new InvalidParamError("name"));
+    expect(createInventoryWithInvalidName).toThrowError(new InvalidParamError("name"))
   })
 
   test("should return correct amount", () => {
@@ -138,7 +138,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidAmount).toThrowError(new MissingParamError("amount"));
+    expect(createInventoryWithInvalidAmount).toThrowError(new MissingParamError("amount"))
   })
 
   test("should throw error if amount is invalid", () => {
@@ -155,7 +155,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidAmount).toThrowError(new InvalidParamError("amount"));
+    expect(createInventoryWithInvalidAmount).toThrowError(new InvalidParamError("amount"))
   })
 
   test("should return correct serial number", () => {
@@ -187,7 +187,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvaliSerialNumber).toThrowError(new MissingParamError("serial number"));
+    expect(createInventoryWithInvaliSerialNumber).toThrowError(new MissingParamError("serial number"))
   })
 
   test("should throw error if serial number is invalid", () => {
@@ -204,7 +204,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidAmount).toThrowError(new InvalidParamError("serial number"));
+    expect(createInventoryWithInvalidAmount).toThrowError(new InvalidParamError("serial number"))
   })
 
   test("should return correct technical specifications", () => {
@@ -236,7 +236,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvaliTechnicalSpecifications).toThrowError(new MissingParamError("technical specifications"));
+    expect(createInventoryWithInvaliTechnicalSpecifications).toThrowError(new MissingParamError("technical specifications"))
   })
 
   test("should throw error if technical specifications is invalid", () => {
@@ -253,7 +253,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvaliTechnicalSpecifications).toThrowError(new InvalidParamError("technical specifications"));
+    expect(createInventoryWithInvaliTechnicalSpecifications).toThrowError(new InvalidParamError("technical specifications"))
   })
 
   test("should return correct owner", () => {
@@ -268,7 +268,7 @@ describe("Inventory Entity", () => {
       new Comments("comentarios aqui")
     )
 
-    expect(inventory.Owner.value).toEqual("kevin ferreira")
+    expect(inventory.owner.value).toEqual("kevin ferreira")
   })
 
   test("should throw error if owner is not provided", () => {
@@ -285,7 +285,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidOwner).toThrowError(new MissingParamError("owner"));
+    expect(createInventoryWithInvalidOwner).toThrowError(new MissingParamError("owner"))
   })
 
   test("should throw error if owner is invalid", () => {
@@ -334,7 +334,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidLocation).toThrowError(new MissingParamError("location"));
+    expect(createInventoryWithInvalidLocation).toThrowError(new MissingParamError("location"))
   })
 
   test("should throw error if location is invalid", () => {
@@ -383,7 +383,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidLocation).toThrowError(new MissingParamError("comments"));
+    expect(createInventoryWithInvalidLocation).toThrowError(new MissingParamError("comments"))
   })
 
   test("should throw error if comments is invalid", () => {
