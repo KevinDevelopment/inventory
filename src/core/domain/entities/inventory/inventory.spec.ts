@@ -8,8 +8,7 @@ import { TechnicalSpecifications } from "../../value-objects/technical-specifica
 import { Owner } from "../../value-objects/owner";
 import { Location } from "../../value-objects/location";
 import { Comments } from "../../value-objects/comments";
-import { InvalidParamError } from "../../errors/invalid-param-error";
-import { MissingParamError } from "../../errors/missing-param-error";
+import { InvalidParamError, MissingParamError } from "../../errors";
 
 describe("Inventory Entity", () => {
   test("should return correct id", () => {
