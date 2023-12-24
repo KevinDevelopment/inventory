@@ -1,15 +1,15 @@
-import { InsertItemInInventory } from "../repositories/inventory-repository"
-import { InventoryInputDto } from "../dto/inventory-dto"
-import { InventoryOutputDto } from "../dto/inventory-dto"
-import { Inventory } from "../domain/entities/inventory/inventory"
-import { ID } from "../domain/value-objects/id"
-import { Name } from "../domain/value-objects/name"
-import { Amount } from "../domain/value-objects/amount"
-import { SerialNumber } from "../domain/value-objects/serial-number"
-import { TechnicalSpecifications } from "../domain/value-objects/technical-specifications"
-import { Owner } from "../domain/value-objects/owner"
-import { Location } from "../domain/value-objects/location"
-import { Comments } from "../domain/value-objects/comments"
+import { InsertItemInInventory } from "../../repositories/inventory-repository"
+import { InventoryInputDto } from "../../dto/inventory-dto"
+import { InventoryOutputDto } from "../../dto/inventory-dto"
+import { Inventory } from "../../domain/entities/inventory/inventory"
+import { ID } from "../../domain/value-objects/id"
+import { Name } from "../../domain/value-objects/name"
+import { Amount } from "../../domain/value-objects/amount"
+import { SerialNumber } from "../../domain/value-objects/serial-number"
+import { TechnicalSpecifications } from "../../domain/value-objects/technical-specifications"
+import { Owner } from "../../domain/value-objects/owner"
+import { Location } from "../../domain/value-objects/location"
+import { Comments } from "../../domain/value-objects/comments"
 
 export class InsertItemUseCase {
   private _insertItemInInventory: InsertItemInInventory
@@ -39,12 +39,12 @@ export class InsertItemUseCase {
       if (error instanceof Error) {
         return {
           message: error.message,
-          status: 404
+          status: 400
         }
       }
       return {
         message: "erro ao inserir item no inventário",
-        status: 200
+        status: 500
       }
     }
   }
