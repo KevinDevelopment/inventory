@@ -1,8 +1,11 @@
-FROM node:20.10.0-alpine
+FROM node:20.10.0-alpine3.17
+RUN apk --no-cache add \
+    openssl
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 WORKDIR /home/node/app
 COPY package*.json ./
-RUN  npm install 
+RUN npm install
+RUN npx prisma generate
 COPY --chown=node:node . .
 EXPOSE 8080
-CMD [ "npm", "run", "dev" ]
+CMD ["npm", "run", "dev"]

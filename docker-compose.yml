@@ -1,18 +1,44 @@
-version: '3'
+  version: '3'
 
-services:
-  node:
-    build: .
-    container_name: inventory-server
-    command: "npm run dev"
-    working_dir: /home/node/app
-    environment:
-      - NODE_ENV=production
-    networks:
-      - inventory-network
-    expose:
-      - 8080
+  services:
+    node:
+      build: .
+      container_name: inventory-server
+      command: "npm run dev"
+      working_dir: /home/node/app
+      environment:
+        - NODE_ENV=production
+      depends_on:
+        - db
+      networks:
+        - inventory-network
+      expose:
+        - 8080
+      ports:
+        - "8080:8080"
 
-networks:
-  inventory-network:
-    
+    db:
+      image: mysql:latest
+      command: --default-authentication-plugin=mysql_native_password
+      container_name: mysql
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_USER: root
+        MYSQL_PASSWORD: example
+        MYSQL_DATABASE: inventory      
+      ports:
+        - "3307:3306"
+      volumes:
+        - ./database:/var/lib/mysql
+      networks:
+        - inventory-network
+
+    adminer:
+      image: adminer
+      restart: always
+      ports:
+        - "8888:8888"
+
+  networks:
+    inventory-network:

@@ -69,35 +69,7 @@ export class Inventory {
   public get comments(): Comments {
     return this._comments
   }
-
-  public InsertItemName(_name: Name) {
-    this._name = _name
-  }
-
-  public enterQuantityInStock(_amount: Amount) {
-    this._amount = _amount
-  }
-
-  public insertSerialNumber(_serialNumber: SerialNumber) {
-    this._serialNumber = _serialNumber
-  }
-
-  public insertTechnicalSpecifications(_technicalSpecifications: TechnicalSpecifications) {
-    this._technicalSpecifications = _technicalSpecifications
-  }
-
-  public insertItemOwner(_owner: Owner) {
-    this._owner = _owner
-  }
-
-  public enterLocation(_location: Location) {
-    this._location = _location
-  }
-
-  public insertComments(_comments: Comments) {
-    this._comments = _comments
-  }
-
+  
 }
 
 
