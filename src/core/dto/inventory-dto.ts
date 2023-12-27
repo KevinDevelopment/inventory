@@ -1,5 +1,4 @@
-export interface InventoryInputDto {
-  id: string
+export interface InventoryInputDto {  
   name: string
   amount: number
   serialNumber: string

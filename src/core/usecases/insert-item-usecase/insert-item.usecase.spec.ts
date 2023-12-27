@@ -23,8 +23,7 @@ describe("insert-item.usecase", () => {
   test("should add an item in inventory with successfully", async () => {
     const inventoryMock = new InventoryMock()
     const sut = new InsertItemUseCase(inventoryMock)
-    const inputDto = {
-      id: "123",
+    const inputDto = {      
       name: "Item1",
       amount: 1,
       serialNumber: "SN123",
@@ -41,9 +40,8 @@ describe("insert-item.usecase", () => {
   test("should generate an error if any item is passed with an empty value", async () => {    
     const inventoryMock = new InventoryMock();
     const sut = new InsertItemUseCase(inventoryMock);
-    const input = {     
-      id: "",
-      name: "Item1",
+    const input = {  
+      name: null as any,
       amount: 1,
       serialNumber: "SN123",
       technicalSpecifications: "Specs",
@@ -53,16 +51,15 @@ describe("insert-item.usecase", () => {
     };   
     const result = await sut.perform(input)    
     console.log(result.message)
-    expect(result.message).toEqual("Missing param: ID");
+    expect(result.message).toEqual("Missing param: name");
     expect(result.status).toBe(400);
   })
 
   test("should generate an error if any item is passed with an invalid value", async () => {    
     const inventoryMock = new InventoryMock();
     const sut = new InsertItemUseCase(inventoryMock);
-    const input = {     
-      id: 545454554 as any,
-      name: "Item1",
+    const input = {    
+      name: 5656565656 as any,
       amount: 1,
       serialNumber: "SN123",
       technicalSpecifications: "Specs",
@@ -72,15 +69,14 @@ describe("insert-item.usecase", () => {
     };   
     const result = await sut.perform(input)    
     console.log(result.message)
-    expect(result.message).toEqual("Invalid param: ID");
+    expect(result.message).toEqual("Invalid param: name");
     expect(result.status).toBe(400);
   });
 
   test("should generate an error if any item is passed with an invalid value", async () => {    
     const inventoryMock = new inventoryMockWithError();
     const sut = new InsertItemUseCase(inventoryMock);
-    const input = {     
-      id: "656565",
+    const input = {   
       name: "Item1",
       amount: 1,
       serialNumber: "SN123",

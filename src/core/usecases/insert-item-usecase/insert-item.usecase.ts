@@ -2,7 +2,6 @@ import { InsertItemInInventory } from "../../repositories/inventory-repository"
 import { InventoryInputDto } from "../../dto/inventory-dto"
 import { InventoryOutputDto } from "../../dto/inventory-dto"
 import { Inventory } from "../../domain/entities/inventory/inventory"
-import { ID } from "../../domain/value-objects/id"
 import { Name } from "../../domain/value-objects/name"
 import { Amount } from "../../domain/value-objects/amount"
 import { SerialNumber } from "../../domain/value-objects/serial-number"
@@ -20,8 +19,7 @@ export class InsertItemUseCase {
 
   async perform(input: InventoryInputDto): Promise<InventoryOutputDto> {
     try {
-      const inventory = new Inventory(
-        new ID(input.id),
+      const inventory = new Inventory(        
         new Name(input.name),
         new Amount(input.amount),
         new SerialNumber(input.serialNumber),

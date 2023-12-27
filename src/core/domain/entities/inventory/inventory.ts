@@ -1,4 +1,3 @@
-import { ID } from "../../value-objects/id"
 import { Name } from "../../value-objects/name"
 import { Amount } from "../../value-objects/amount"
 import { SerialNumber } from "../../value-objects/serial-number"
@@ -7,8 +6,7 @@ import { Owner } from "../../value-objects/owner"
 import { Location } from "../../value-objects/location"
 import { Comments } from "../../value-objects/comments"
 
-export class Inventory {
-  private readonly _id: ID
+export class Inventory {  
   private _name: Name
   private _amount: Amount
   private _serialNumber: SerialNumber
@@ -18,8 +16,7 @@ export class Inventory {
   private _comments: Comments
 
   constructor
-    (
-      _id: ID,
+    (      
       _name: Name,
       _amount: Amount,
       _serialNumber: SerialNumber,
@@ -27,8 +24,7 @@ export class Inventory {
       _owner: Owner,
       _location: Location,
       _comments: Comments
-    ) {
-    this._id = _id
+    ) {    
     this._name = _name
     this._amount = _amount
     this._serialNumber = _serialNumber
@@ -36,11 +32,7 @@ export class Inventory {
     this._owner = _owner
     this._location = _location
     this._comments = _comments
-  }
-
-  public get id(): ID {
-    return this._id
-  }
+  } 
 
   public get name(): Name {
     return this._name

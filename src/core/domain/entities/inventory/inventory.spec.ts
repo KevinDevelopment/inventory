@@ -1,6 +1,5 @@
 import { describe, test, expect } from "vitest"
 import { Inventory } from "./inventory"
-import { ID } from "../../value-objects/id"
 import { Name } from "../../value-objects/name"
 import { Amount } from "../../value-objects/amount"
 import { SerialNumber } from "../../value-objects/serial-number"
@@ -11,58 +10,8 @@ import { Comments } from "../../value-objects/comments"
 import { InvalidParamError, MissingParamError } from "../../errors"
 
 describe("Inventory Entity", () => {
-  test("should return correct id", () => {
-    const inventory = new Inventory(
-      new ID("152525225525"),
-      new Name("kevin ferreira"),
-      new Amount(45665),
-      new SerialNumber("445564-565777"),
-      new TechnicalSpecifications("32 polegadas ips full hd"),
-      new Owner("kevin ferreira"),
-      new Location("são paulo"),
-      new Comments("comentarios aqui")
-    )
-
-    expect(inventory.id.value).toEqual("152525225525")
-  })
-
-  test("should throw error if id is not provided", () => {
-    const createInventoryWithInvalidId = () => {
-      new Inventory(
-        new ID(null as any),
-        new Name("kevin ferreira"),
-        new Amount(45665),
-        new SerialNumber("445564-565777"),
-        new TechnicalSpecifications("32 polegadas ips full hd"),
-        new Owner("kevin ferreira"),
-        new Location("são paulo"),
-        new Comments("comentarios aqui")
-      )
-    }
-
-    expect(createInventoryWithInvalidId).toThrowError(new MissingParamError("ID"))
-  })
-
-  test("should throw error if id is invalid", () => {
-    const createInventoryWithInvalidId = () => {
-      new Inventory(
-        new ID(5454545454 as any),
-        new Name("kevin ferreira"),
-        new Amount(45665),
-        new SerialNumber("445564-565777"),
-        new TechnicalSpecifications("32 polegadas ips full hd"),
-        new Owner("kevin ferreira"),
-        new Location("são paulo"),
-        new Comments("comentarios aqui")
-      )
-    }
-
-    expect(createInventoryWithInvalidId).toThrowError(new InvalidParamError("ID"))
-  })
-
   test("should return correct name", () => {
-    const inventory = new Inventory(
-      new ID("152525225525"),
+    const inventory = new Inventory(      
       new Name("kevin ferreira"),
       new Amount(45665),
       new SerialNumber("445564-565777"),
@@ -77,8 +26,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if name is not provided", () => {
     const createInventoryWithInvalidName = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name(null as any),
         new Amount(45665),
         new SerialNumber("445564-565777"),
@@ -94,8 +42,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if name is invalid", () => {
     const createInventoryWithInvalidName = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name(656565656 as any),
         new Amount(45665),
         new SerialNumber("445564-565777"),
@@ -110,8 +57,7 @@ describe("Inventory Entity", () => {
   })
 
   test("should return correct amount", () => {
-    const inventory = new Inventory(
-      new ID("152525225525"),
+    const inventory = new Inventory(      
       new Name("kevin ferreira"),
       new Amount(45665),
       new SerialNumber("445564-565777"),
@@ -126,8 +72,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if amount is not provided", () => {
     const createInventoryWithInvalidAmount = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name("kevin ferreira"),
         new Amount(null as any),
         new SerialNumber("445564-565777"),
@@ -143,8 +88,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if amount is invalid", () => {
     const createInventoryWithInvalidAmount = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(       
         new Name("kevin ferreira"),
         new Amount("5454554" as any),
         new SerialNumber("445564-565777"),
@@ -159,8 +103,7 @@ describe("Inventory Entity", () => {
   })
 
   test("should return correct serial number", () => {
-    const inventory = new Inventory(
-      new ID("152525225525"),
+    const inventory = new Inventory(      
       new Name("kevin ferreira"),
       new Amount(45665),
       new SerialNumber("445564-565777"),
@@ -175,8 +118,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if serial number is not provided", () => {
     const createInventoryWithInvaliSerialNumber = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name("kevin ferreira"),
         new Amount(45665),
         new SerialNumber(null as any),
@@ -192,8 +134,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if serial number is invalid", () => {
     const createInventoryWithInvalidAmount = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name("kevin ferreira"),
         new Amount(45665),
         new SerialNumber(5454545 as any),
@@ -208,8 +149,7 @@ describe("Inventory Entity", () => {
   })
 
   test("should return correct technical specifications", () => {
-    const inventory = new Inventory(
-      new ID("152525225525"),
+    const inventory = new Inventory(      
       new Name("kevin ferreira"),
       new Amount(45665),
       new SerialNumber("445564-565777"),
@@ -224,8 +164,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if technical specifications is not provided", () => {
     const createInventoryWithInvaliTechnicalSpecifications = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name("kevin ferreira"),
         new Amount(45665),
         new SerialNumber("445564-565777"),
@@ -241,8 +180,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if technical specifications is invalid", () => {
     const createInventoryWithInvaliTechnicalSpecifications = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name("kevin ferreira"),
         new Amount(45665),
         new SerialNumber("445564-565777"),
@@ -257,8 +195,7 @@ describe("Inventory Entity", () => {
   })
 
   test("should return correct owner", () => {
-    const inventory = new Inventory(
-      new ID("152525225525"),
+    const inventory = new Inventory(      
       new Name("kevin ferreira"),
       new Amount(45665),
       new SerialNumber("445564-565777"),
@@ -273,8 +210,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if owner is not provided", () => {
     const createInventoryWithInvalidOwner = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name("kevin ferreira"),
         new Amount(45665),
         new SerialNumber("445564-565777"),
@@ -290,8 +226,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if owner is invalid", () => {
     const createInventoryWithInvalidOwner = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name("kevin ferreira"),
         new Amount(45665),
         new SerialNumber("445564-565777"),
@@ -306,8 +241,7 @@ describe("Inventory Entity", () => {
   })
 
   test("should return correct location", () => {
-    const inventory = new Inventory(
-      new ID("152525225525"),
+    const inventory = new Inventory(     
       new Name("kevin ferreira"),
       new Amount(45665),
       new SerialNumber("445564-565777"),
@@ -322,8 +256,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if location is not provided", () => {
     const createInventoryWithInvalidLocation = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name("kevin ferreira"),
         new Amount(45665),
         new SerialNumber("445564-565777"),
@@ -339,8 +272,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if location is invalid", () => {
     const createInventoryWithInvalidOwner = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name("kevin ferreira"),
         new Amount(45665),
         new SerialNumber("445564-565777"),
@@ -355,8 +287,7 @@ describe("Inventory Entity", () => {
   })
 
   test("should return correct comments", () => {
-    const inventory = new Inventory(
-      new ID("152525225525"),
+    const inventory = new Inventory(      
       new Name("kevin ferreira"),
       new Amount(45665),
       new SerialNumber("445564-565777"),
@@ -371,8 +302,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if comments is not provided", () => {
     const createInventoryWithInvalidLocation = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name("kevin ferreira"),
         new Amount(45665),
         new SerialNumber("445564-565777"),
@@ -388,8 +318,7 @@ describe("Inventory Entity", () => {
 
   test("should throw error if comments is invalid", () => {
     const createInventoryWithInvalidOwner = () => {
-      new Inventory(
-        new ID("152525225525"),
+      new Inventory(        
         new Name("kevin ferreira"),
         new Amount(45665),
         new SerialNumber("445564-565777"),
