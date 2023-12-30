@@ -7,28 +7,24 @@
       command: "npm run dev"
       working_dir: /home/node/app
       environment:
-        - NODE_ENV=production
+        - NODE_ENV=production        
       depends_on:
         - db
       networks:
         - inventory-network
       expose:
-        - 8080
+        - 8888
       ports:
-        - "8080:8080"
+        - "8888:8888"
 
     db:
-      image: mysql:latest
-      command: --default-authentication-plugin=mysql_native_password
+      image: mysql:latest      
       container_name: mysql
       restart: always
       environment:
         MYSQL_ROOT_PASSWORD: root
-        MYSQL_USER: root
-        MYSQL_PASSWORD: example
-        MYSQL_DATABASE: inventory      
       ports:
-        - "3307:3306"
+        - "3306:3306"
       volumes:
         - ./database:/var/lib/mysql
       networks:
@@ -38,7 +34,9 @@
       image: adminer
       restart: always
       ports:
-        - "8888:8888"
+        - "8080:8080"
+      networks:
+        - inventory-network
 
   networks:
     inventory-network:
