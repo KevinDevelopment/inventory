@@ -1,6 +1,6 @@
 import { HttpRequest, HttpResponse } from "../ports/http"
 import { InsertItemUseCase } from "../../core/usecases/insert-item-usecase/insert-item.usecase"
-import { MySqlAdapter } from "../../infrastructure/adapters/mysql-adapter"
+import { MySqlAdapter } from "../../infrastructure/adapters/insert-item-adapter"
 
 export class InsertItemController {
   private insertItemInUseCase: InsertItemUseCase

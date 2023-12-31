@@ -1,8 +1,9 @@
 import { InsertItemController } from "../controllers/insert-item-controller"
+import { FindAllItemsInInventoryController } from "../controllers/find-all-items-in-inventory-controller"
 import { Request, Response } from "express"
-import { HttpRequest } from "../ports/http"
+import { HttpRequest, HttpResponse } from "../ports/http"
 
-export const adaptRouter = (controller: InsertItemController) => {
+export const adaptInsertItemController = (controller: InsertItemController) => {
   return async (req: Request, res: Response) => {
     const httpRequest: HttpRequest = {
       body: req.body
@@ -11,3 +12,11 @@ export const adaptRouter = (controller: InsertItemController) => {
     res.status(HttpResponse.status).json(HttpResponse.body)
   }
 }
+
+export const adapterFindAllItemsController = (controller: FindAllItemsInInventoryController) => {
+  return async (req: Request, res: Response) => {
+    const httpResponse = await controller.handle()
+    res.status(httpResponse.status).json({ messsage: httpResponse.message, status: httpResponse.status, data: httpResponse.body })
+  }
+}
+
