@@ -10,5 +10,6 @@ export interface FindItemByIdOutPutDto {
   technicalSpecifications: string
   owner: string
   location: string
-  comments: string
+  comments: string,
+  error?: string
 }

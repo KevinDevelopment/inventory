@@ -1,5 +1,6 @@
 import { FindItemByIdUseCase } from "../../core/usecases/find-item-by-id"
 import { FindItemByIdAdapter } from "../../infrastructure/adapters/find-item-by-id-adapter"
+import { InvalidSearchError } from "../errors/invalid-search-error"
 import { HttpRequest, HttpResponse } from "../ports/http"
 
 export class FindItemByIdController {
@@ -21,8 +22,19 @@ export class FindItemByIdController {
         body: itemById
       }
     } catch (error) {
-      throw new Error("houve um erro ao retornar item do inventario");
+      if (error instanceof Error) {
+        return {
+          message: error.message,
+          status: 403,
+          body: []
+        }
+      }
 
+      return {
+        message: "Erro interno do servidor",
+        status: 500,
+        body: []
+      }
     }
   }
 }
