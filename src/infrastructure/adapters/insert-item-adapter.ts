@@ -1,12 +1,12 @@
 import { Inventory } from "../../core/domain/entities/inventory/inventory"
 import { InsertItemInInventory } from "../../core/repositories/inventory-repository"
+import { makePrismaClient } from "../factories/prisma"
 import { v4 as uuidv4 } from "uuid"
-import { PrismaClient } from "@prisma/client"
 
 export class MySqlAdapter implements InsertItemInInventory {
   async add(inventory: Inventory): Promise<void> {
-    try {
-      const prisma = new PrismaClient()
+    try {      
+      const prisma = makePrismaClient()
       const insertItemInInventory = await prisma.inventory.create({
         data: {
           id: uuidv4(),

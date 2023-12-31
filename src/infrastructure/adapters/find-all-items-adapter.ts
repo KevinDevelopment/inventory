@@ -1,11 +1,11 @@
 import { FindAllItemsInInventoryOutPutDto } from "../../core/dto/find-all-items-dto"
 import { FindAllItemsInInventory } from "../../core/repositories/inventory-repository"
-import { PrismaClient } from "@prisma/client"
+import { makePrismaClient } from "../factories/prisma";
 
 export class FindAllItemsInInventoryAdapter implements FindAllItemsInInventory {
   async find(): Promise<FindAllItemsInInventoryOutPutDto[]> {
-    try {
-      const prisma = new PrismaClient()
+    try {      
+      const prisma = makePrismaClient()
       const returnAllItemsInInventory = await prisma.inventory.findMany()
       if (returnAllItemsInInventory.length === 0) throw new Error("Não há itesm no inventario");
       const result: FindAllItemsInInventoryOutPutDto[] = returnAllItemsInInventory.map((item) => ({
