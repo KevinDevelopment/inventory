@@ -1,4 +1,4 @@
-import { FindAllItemsUseCase } from "../../core/usecases/find-all-items-usecase/find-all-items-usecase"
+import { FindAllItemsUseCase } from "../../core/usecases/find-all-items-usecase"
 import { FindAllItemsInInventoryAdapter } from "../../infrastructure/adapters/find-all-items-adapter"
 import { HttpResponse } from "../ports/http"
 

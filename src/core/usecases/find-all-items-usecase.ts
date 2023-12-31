@@ -1,5 +1,5 @@
-import { FindAllItemsInInventory } from "../../repositories/inventory-repository"
-import { FindAllItemsInInventoryOutPutDto } from "../../dto/find-all-items-dto"
+import { FindAllItemsInInventory } from "../repositories/inventory-repository"
+import { FindAllItemsInInventoryOutPutDto } from "../dto/find-all-items-dto"
 
 export class FindAllItemsUseCase {
   private findAllItemsInInventory: FindAllItemsInInventory

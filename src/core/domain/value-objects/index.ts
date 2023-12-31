@@ -1,4 +1,3 @@
-export * from "./id"
 export * from "./amount"
 export * from "./comments"
 export * from "./location"
