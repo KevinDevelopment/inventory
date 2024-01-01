@@ -9,22 +9,17 @@ export class FindAllItemsUseCase {
   }
 
   async perform(): Promise<FindAllItemsInInventoryOutPutDto[]> {
-    try {
-      const itemsInInventory = await this.findAllItemsInInventory.find()
-      const result: FindAllItemsInInventoryOutPutDto[] = itemsInInventory.map((item) => ({
-        id: item.id,
-        technicalSpecifications: item.technicalSpecifications,
-        amount: item.amount,
-        comments: item.comments,
-        location: item.location,
-        name: item.name,
-        owner: item.owner,
-        serialNumber: item.serialNumber,
-      }))
-      return result
-    } catch (error) {
-      console.log(error)
-      throw new Error()
-    }
+    const itemsInInventory = await this.findAllItemsInInventory.find()
+    const result: FindAllItemsInInventoryOutPutDto[] = itemsInInventory.map((item) => ({
+      id: item.id,
+      technicalSpecifications: item.technicalSpecifications,
+      amount: item.amount,
+      comments: item.comments,
+      location: item.location,
+      name: item.name,
+      owner: item.owner,
+      serialNumber: item.serialNumber,
+    }))
+    return result
   }
 }

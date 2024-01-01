@@ -1,6 +1,5 @@
 import { FindItemById } from "../repositories/inventory-repository"
 import { FindItemByIdInputDto, FindItemByIdOutPutDto } from "../dto/find-item-by-id-dto"
-import { NotFoundError } from "./errors/not-found-item-error"
 
 export class FindItemByIdUseCase {
   private readonly findItemByid: FindItemById
@@ -13,12 +12,7 @@ export class FindItemByIdUseCase {
     const itemId: FindItemByIdInputDto = {
       id: input.id
     }
-    const itemInInventory = await this.findItemByid.findById(itemId)
-
-    if (itemInInventory === null) {
-      throw new NotFoundError()
-    }
-
+    const itemInInventory = await this.findItemByid.findById(itemId)   
     return {
       id: itemInInventory.id,
       amount: itemInInventory.amount,

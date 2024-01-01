@@ -28,7 +28,19 @@ export class InsertItemController {
         body: insertItem
       }
     } catch (error) {
-      throw new Error("erro no controller")
+      if (error instanceof Error) {
+        return {
+          message: error.message,
+          status: 403,
+          body: []
+        }
+      }
+    }
+
+    return {
+      message: "Erro interno do servidor",
+      status: 500,
+      body: []
     }
   }
 }

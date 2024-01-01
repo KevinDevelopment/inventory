@@ -13,12 +13,24 @@ export class FindAllItemsInInventoryController {
     try {
       const result = await this.findAllItems.perform()
       return {
-        message: "items no inventario retoranados com sucesso",
+        message: "items no inventario retornados com sucesso",
         status: 200,
         body: result
       }
     } catch (error) {
-      throw new Error("Erro ao buscar items no inventario")
+      if (error instanceof Error) {
+        return {
+          message: error?.message,
+          status: 403,
+          body: []
+        }
+      }
+
+      return {
+        message: "Erro interno do servidor",
+        status: 500,
+        body: []
+      }
     }
   }
 }

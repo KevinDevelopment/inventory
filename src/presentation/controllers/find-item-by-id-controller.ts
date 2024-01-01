@@ -1,6 +1,5 @@
 import { FindItemByIdUseCase } from "../../core/usecases/find-item-by-id"
 import { FindItemByIdAdapter } from "../../infrastructure/adapters/find-item-by-id-adapter"
-import { InvalidSearchError } from "../errors/invalid-search-error"
 import { HttpRequest, HttpResponse } from "../ports/http"
 
 export class FindItemByIdController {

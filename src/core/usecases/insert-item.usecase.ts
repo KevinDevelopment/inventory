@@ -18,32 +18,19 @@ export class InsertItemUseCase {
   }
 
   async perform(input: InventoryInputDto): Promise<InventoryOutputDto> {
-    try {
-      const inventory = new Inventory(        
-        new Name(input.name),
-        new Amount(input.amount),
-        new SerialNumber(input.serialNumber),
-        new TechnicalSpecifications(input.technicalSpecifications),
-        new Owner(input.owner),
-        new Location(input.location),
-        new Comments(input.comments)
-      )
-      const insertItemInInventory = await this._insertItemInInventory.add(inventory)
-      return {
-        message: "item cadastrado no inventário",
-        status: 200
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        return {
-          message: error.message,
-          status: 400
-        }
-      }
-      return {
-        message: "erro ao inserir item no inventário",
-        status: 500
-      }
+    const inventory = new Inventory(
+      new Name(input.name),
+      new Amount(input.amount),
+      new SerialNumber(input.serialNumber),
+      new TechnicalSpecifications(input.technicalSpecifications),
+      new Owner(input.owner),
+      new Location(input.location),
+      new Comments(input.comments)
+    )
+    const insertItemInInventory = await this._insertItemInInventory.add(inventory)
+    return {
+      message: "item cadastrado no inventário",
+      status: 200
     }
   }
 }
