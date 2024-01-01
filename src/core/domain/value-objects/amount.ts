@@ -5,6 +5,10 @@ export class Amount {
   private _value: number
 
   constructor(_value: number) {
+    if (_value === null || _value === undefined) {
+      throw new MissingParamError("amount");
+    }
+
     if (!_value) {
       throw new MissingParamError("amount")
     }

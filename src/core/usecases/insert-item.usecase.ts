@@ -18,19 +18,33 @@ export class InsertItemUseCase {
   }
 
   async perform(input: InventoryInputDto): Promise<InventoryOutputDto> {
-    const inventory = new Inventory(
-      new Name(input.name),
-      new Amount(input.amount),
-      new SerialNumber(input.serialNumber),
-      new TechnicalSpecifications(input.technicalSpecifications),
-      new Owner(input.owner),
-      new Location(input.location),
-      new Comments(input.comments)
-    )
-    const insertItemInInventory = await this._insertItemInInventory.add(inventory)
-    return {
-      message: "item cadastrado no inventário",
-      status: 200
+    try {
+      const inventory = new Inventory(
+        new Name(input.name),
+        new Amount(input.amount),
+        new SerialNumber(input.serialNumber),
+        new TechnicalSpecifications(input.technicalSpecifications),
+        new Owner(input.owner),
+        new Location(input.location),
+        new Comments(input.comments)
+      )
+      const insertItemInInventory = await this._insertItemInInventory.add(inventory)
+      return {
+        message: "item cadastrado no inventário",
+        status: 200
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        return {
+          message: error.message,
+          status: 403
+        }
+      }
+
+      return {
+        message: "erro interno do servidor",
+        status: 500
+      }
     }
   }
 }
