@@ -10,7 +10,7 @@ export class InsertItemController {
     this.insertItemInUseCase = new InsertItemUseCase(insertItem)
   }
 
-  async handle(HttpRequest: HttpRequest): Promise<HttpResponse> {
+  async handler(HttpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const inputDto = {        
         name: HttpRequest.body.name,
@@ -30,7 +30,7 @@ export class InsertItemController {
       }
     } catch (error) {
       console.error(error)
-      if (error instanceof MissingParamError) {
+      if (error instanceof Error) {
         return {
           message: error.message,
           status: 403,

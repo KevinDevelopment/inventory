@@ -12,7 +12,7 @@ datasource db {
 }
 
 model Inventory {
-  id String @id @unique
+  id String @id @unique 
   name String
   amount Int
   serial_number String

@@ -60,7 +60,7 @@ export class Inventory {
 
   public get comments(): Comments {
     return this._comments
-  }
+  } 
   
 }
 
