@@ -15,6 +15,10 @@ export interface FindItemById {
   findById(id: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto>
 }
 
+export interface FindItemByName {
+  findByName(name: string): Promise<boolean>
+}
+
 export interface IncrementItemInInventory {
   increment(item: IncreaseItemInputDto): Promise<IncreaseItemOutputDto>
 }

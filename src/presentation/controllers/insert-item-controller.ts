@@ -1,13 +1,13 @@
 import { HttpRequest, HttpResponse } from "../ports/http"
 import { InsertItemUseCase } from "../../core/usecases/insert-item.usecase"
 import { MySqlAdapter } from "../../infrastructure/adapters/insert-item-adapter"
-import { MissingParamError } from "../../core/domain/errors"
+import { FindItemByNameAdapter } from "../../infrastructure/adapters/find-item-by-name-adapter"
 
 export class InsertItemController {
-  private insertItemInUseCase: InsertItemUseCase
+  private insertItemInUseCase: InsertItemUseCase  
 
-  constructor(insertItem = new MySqlAdapter()) {
-    this.insertItemInUseCase = new InsertItemUseCase(insertItem)
+  constructor(insertItem = new MySqlAdapter(), findItemByName = new FindItemByNameAdapter()) {
+    this.insertItemInUseCase = new InsertItemUseCase(insertItem, findItemByName)
   }
 
   async handler(HttpRequest: HttpRequest): Promise<HttpResponse> {
@@ -20,7 +20,7 @@ export class InsertItemController {
         owner: HttpRequest.body.owner,
         location: HttpRequest.body.location,
         comments: HttpRequest.body.comments
-      }      
+      }
 
       const insertItem = await this.insertItemInUseCase.perform(inputDto)
       return {
