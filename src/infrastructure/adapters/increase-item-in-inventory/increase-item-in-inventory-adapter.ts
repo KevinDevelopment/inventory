@@ -1,6 +1,6 @@
-import { IncreaseItemInputDto, IncreaseItemOutputDto } from "../../core/dto/increment-item-dto";
-import { IncrementItemInInventory } from "../../core/repositories/inventory-repository"
-import { makePrismaClient } from "../factories/prisma";
+import { IncreaseItemInputDto, IncreaseItemOutputDto } from "../../../core/dto/increment-item-dto";
+import { IncrementItemInInventory } from "../../../core/repositories/inventory-repository"
+import { makePrismaClient } from "../../factories/prisma";
 
 
 export class IncreaseItemInInventoryAdapter implements IncrementItemInInventory {

@@ -1,6 +1,6 @@
-import { Inventory } from "../../core/domain/entities/inventory/inventory"
-import { InsertItemInInventory } from "../../core/repositories/inventory-repository"
-import { makePrismaClient } from "../factories/prisma"
+import { Inventory } from "../../../core/domain/entities/inventory/inventory"
+import { InsertItemInInventory } from "../../../core/repositories/inventory-repository"
+import { makePrismaClient } from "../../factories/prisma"
 import { v4 as uuidv4 } from "uuid"
 
 export class MySqlAdapter implements InsertItemInInventory {

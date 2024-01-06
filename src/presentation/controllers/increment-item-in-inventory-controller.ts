@@ -1,5 +1,5 @@
 import { IncreaseItemInInventoryUseCase } from "../../core/usecases/increment-item-usecase"
-import { IncreaseItemInInventoryAdapter } from "../../infrastructure/adapters/increase-item-in-inventory-adapter"
+import { IncreaseItemInInventoryAdapter } from "../../infrastructure/adapters/increase-item-in-inventory/increase-item-in-inventory-adapter"
 import { HttpResponse, HttpRequest } from "../ports/http"
 
 export class IncrementItemInInventoryController {
