@@ -1,7 +1,7 @@
-import { FindAllItemsInInventoryOutPutDto } from "../../core/dto/find-all-items-dto"
-import { FindAllItemsInInventory } from "../../core/repositories/inventory-repository"
-import { NotFoundError } from "../errors/not-found-item-error";
-import { makePrismaClient } from "../factories/prisma";
+import { FindAllItemsInInventoryOutPutDto } from "../../../core/dto/find-all-items-dto"
+import { FindAllItemsInInventory } from "../../../core/repositories/inventory-repository"
+import { NotFoundError } from "../../errors/not-found-item-error";
+import { makePrismaClient } from "../../factories/prisma";
 
 export class FindAllItemsInInventoryAdapter implements FindAllItemsInInventory {
   async find(): Promise<FindAllItemsInInventoryOutPutDto[]> {

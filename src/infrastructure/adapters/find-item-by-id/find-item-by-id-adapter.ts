@@ -1,7 +1,7 @@
-import { FindItemByIdInputDto, FindItemByIdOutPutDto } from "../../core/dto/find-item-by-id-dto"
-import { FindItemById } from "../../core/repositories/inventory-repository"
-import { makePrismaClient } from "../factories/prisma"
-import { NotFoundError } from "../errors/not-found-item-error"
+import { FindItemByIdInputDto, FindItemByIdOutPutDto } from "../../../core/dto/find-item-by-id-dto"
+import { FindItemById } from "../../../core/repositories/inventory-repository"
+import { makePrismaClient } from "../../factories/prisma"
+import { NotFoundError } from "../../errors/not-found-item-error"
 
 export class FindItemByIdAdapter implements FindItemById {
   async findById(input: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto> {

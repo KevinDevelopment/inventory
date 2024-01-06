@@ -1,5 +1,5 @@
 import { FindItemByIdUseCase } from "../../core/usecases/find-item-by-id"
-import { FindItemByIdAdapter } from "../../infrastructure/adapters/find-item-by-id-adapter"
+import { FindItemByIdAdapter } from "../../infrastructure/adapters/find-item-by-id/find-item-by-id-adapter"
 import { HttpRequest, HttpResponse } from "../ports/http"
 
 export class FindItemByIdController {
