@@ -1,5 +1,5 @@
-import { IncrementItemInInventory } from "../repositories/inventory-repository"
-import { IncreaseItemInputDto, IncreaseItemOutputDto } from "../dto/increment-item-dto"
+import { IncrementItemInInventory } from "../../repositories/inventory-repository"
+import { IncreaseItemInputDto, IncreaseItemOutputDto } from "../../dto/increment-item-dto"
 
 export class IncreaseItemInInventoryUseCase { 
   private incrementItem: IncrementItemInInventory
