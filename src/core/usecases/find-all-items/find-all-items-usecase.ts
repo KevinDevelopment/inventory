@@ -10,6 +10,9 @@ export class FindAllItemsUseCase {
 
   async perform(): Promise<FindAllItemsInInventoryOutPutDto[]> {
     const itemsInInventory = await this.findAllItemsInInventory.find()
+
+    if (!itemsInInventory) throw new Error("Ainda não existem items cadastrados no inventário");
+
     const result: FindAllItemsInInventoryOutPutDto[] = itemsInInventory.map((item) => ({
       id: item.id,
       technicalSpecifications: item.technicalSpecifications,
