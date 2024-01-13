@@ -7,7 +7,7 @@ import { TechnicalSpecifications } from "../../value-objects/technical-specifica
 import { Owner } from "../../value-objects/owner"
 import { Location } from "../../value-objects/location"
 import { Comments } from "../../value-objects/comments"
-import { InvalidParamError, MissingParamError } from "../../errors"
+import { InvalidAction } from "../../errors"
 
 describe("Inventory Entity", () => {
   test("should return correct name", () => {
@@ -37,7 +37,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidName).toThrowError(new MissingParamError("name"))
+    expect(createInventoryWithInvalidName).toThrowError(new InvalidAction("O nome do item precisa ser informado"))
   })
 
   test("should throw error if name is invalid", () => {
@@ -53,7 +53,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidName).toThrowError(new InvalidParamError("name"))
+    expect(createInventoryWithInvalidName).toThrowError(new InvalidAction("O nome do item precisa ser um texto"))
   })
 
   test("should return correct amount", () => {
@@ -83,7 +83,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidAmount).toThrowError(new MissingParamError("amount"))
+    expect(createInventoryWithInvalidAmount).toThrowError(new InvalidAction("Quantidade não pode ser vazia"))
   })
 
   test("should throw error if amount is invalid", () => {
@@ -99,7 +99,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidAmount).toThrowError(new InvalidParamError("amount"))
+    expect(createInventoryWithInvalidAmount).toThrowError(new InvalidAction("Quantidade precisa ser um número"))
   })
 
   test("should return correct serial number", () => {
@@ -129,7 +129,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvaliSerialNumber).toThrowError(new MissingParamError("serial number"))
+    expect(createInventoryWithInvaliSerialNumber).toThrowError(new InvalidAction("O número de série do item precisa ser informado"))
   })
 
   test("should throw error if serial number is invalid", () => {
@@ -145,7 +145,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidAmount).toThrowError(new InvalidParamError("serial number"))
+    expect(createInventoryWithInvalidAmount).toThrowError(new InvalidAction("O número de série do item precisa ser um texto"))
   })
 
   test("should return correct technical specifications", () => {
@@ -175,7 +175,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvaliTechnicalSpecifications).toThrowError(new MissingParamError("technical specifications"))
+    expect(createInventoryWithInvaliTechnicalSpecifications).toThrowError(new InvalidAction("As especificações técnicas do item precisam ser informadas"))
   })
 
   test("should throw error if technical specifications is invalid", () => {
@@ -191,7 +191,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvaliTechnicalSpecifications).toThrowError(new InvalidParamError("technical specifications"))
+    expect(createInventoryWithInvaliTechnicalSpecifications).toThrowError(new InvalidAction("As especificações técnicas precisam ser do tipo texto"))
   })
 
   test("should return correct owner", () => {
@@ -221,7 +221,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidOwner).toThrowError(new MissingParamError("owner"))
+    expect(createInventoryWithInvalidOwner).toThrowError(new InvalidAction("O responsável pelo item precisa ser informado"))
   })
 
   test("should throw error if owner is invalid", () => {
@@ -237,7 +237,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidOwner).toThrowError(new InvalidParamError("owner"))
+    expect(createInventoryWithInvalidOwner).toThrowError(new InvalidAction("O nome do responsável precisa ser um texto"))
   })
 
   test("should return correct location", () => {
@@ -267,7 +267,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidLocation).toThrowError(new MissingParamError("location"))
+    expect(createInventoryWithInvalidLocation).toThrowError(new InvalidAction("A localização precisa ser informada"))
   })
 
   test("should throw error if location is invalid", () => {
@@ -283,7 +283,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidOwner).toThrowError(new InvalidParamError("location"))
+    expect(createInventoryWithInvalidOwner).toThrowError(new InvalidAction("A localização precisa ser uma string"))
   })
 
   test("should return correct comments", () => {
@@ -313,7 +313,7 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidLocation).toThrowError(new MissingParamError("comments"))
+    expect(createInventoryWithInvalidLocation).toThrowError(new InvalidAction("Comentário precisa ser informado"))
   })
 
   test("should throw error if comments is invalid", () => {
@@ -329,6 +329,6 @@ describe("Inventory Entity", () => {
       )
     }
 
-    expect(createInventoryWithInvalidOwner).toThrowError(new InvalidParamError("comments"))
+    expect(createInventoryWithInvalidOwner).toThrowError(new InvalidAction("Comentário precisa ser um texto"))
   })  
 })

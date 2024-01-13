@@ -1,4 +1,4 @@
-import { IncreaseItemInInventoryUseCase } from "../../core/usecases/increment-item-usecase/increment-item-usecase"
+import { IncreaseItemInInventoryUseCase } from "../../core/usecases/increment-item/increment-item-usecase"
 import { IncreaseItemInInventoryAdapter } from "../../infrastructure/adapters/increase-item-in-inventory/increase-item-in-inventory-adapter"
 import { InvalidAction } from "../../core/domain/errors"
 import { HttpResponse, HttpRequest } from "../ports/http"

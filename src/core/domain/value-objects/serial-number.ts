@@ -9,7 +9,7 @@ export class SerialNumber {
     }
 
     if (typeof (_value) !== "string") {
-      throw new InvalidAction("O núemro de série do item precisa ser um texto")
+      throw new InvalidAction("O número de série do item precisa ser um texto")
     }
 
     this._value = _value
