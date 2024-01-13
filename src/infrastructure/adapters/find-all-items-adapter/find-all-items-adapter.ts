@@ -1,14 +1,11 @@
 import { FindAllItemsInInventoryOutPutDto } from "../../../core/dto/find-all-items-dto"
 import { FindAllItemsInInventory } from "../../../core/repositories/inventory-repository"
-import { NotFoundError } from "../../errors/not-found-item-error";
 import { makePrismaClient } from "../../factories/prisma";
 
 export class FindAllItemsInInventoryAdapter implements FindAllItemsInInventory {
   async find(): Promise<FindAllItemsInInventoryOutPutDto[]> {
     const prisma = makePrismaClient()
-    const returnAllItemsInInventory = await prisma.inventory.findMany()
-
-    if (!returnAllItemsInInventory) throw new NotFoundError("Não existem items cadastrados no inventário")
+    const returnAllItemsInInventory = await prisma.inventory.findMany()   
 
     const result: FindAllItemsInInventoryOutPutDto[] = returnAllItemsInInventory.map((item) => ({
       id: item.id,

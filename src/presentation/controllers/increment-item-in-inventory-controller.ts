@@ -1,5 +1,6 @@
 import { IncreaseItemInInventoryUseCase } from "../../core/usecases/increment-item-usecase/increment-item-usecase"
 import { IncreaseItemInInventoryAdapter } from "../../infrastructure/adapters/increase-item-in-inventory/increase-item-in-inventory-adapter"
+import { InvalidAction } from "../../core/domain/errors"
 import { HttpResponse, HttpRequest } from "../ports/http"
 
 export class IncrementItemInInventoryController {
@@ -23,7 +24,7 @@ export class IncrementItemInInventoryController {
         body: increment
       }
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof InvalidAction) {
         return {
           message: error.message,
           status: 403,

@@ -2,6 +2,7 @@ import { HttpRequest, HttpResponse } from "../ports/http"
 import { InsertItemUseCase } from "../../core/usecases/insert-item.usecase"
 import { MySqlAdapter } from "../../infrastructure/adapters/insert-item-in-inventory/insert-item-adapter"
 import { FindItemByNameAdapter } from "../../infrastructure/adapters/find-item-by-name/find-item-by-name-adapter"
+import { InvalidAction } from "../../core/domain/errors"
 
 export class InsertItemController {
   private insertItemInUseCase: InsertItemUseCase  
@@ -30,7 +31,7 @@ export class InsertItemController {
       }
     } catch (error) {
       console.error(error)
-      if (error instanceof Error) {
+      if (error instanceof InvalidAction) {
         return {
           message: error.message,
           status: 403,

@@ -1,5 +1,6 @@
 import { FindAllItemsInInventory } from "../../repositories/inventory-repository"
 import { FindAllItemsInInventoryOutPutDto } from "../../dto/find-all-items-dto"
+import { InvalidAction } from "../../domain/errors"
 
 export class FindAllItemsUseCase {
   private findAllItemsInInventory: FindAllItemsInInventory
@@ -11,7 +12,7 @@ export class FindAllItemsUseCase {
   async perform(): Promise<FindAllItemsInInventoryOutPutDto[]> {
     const itemsInInventory = await this.findAllItemsInInventory.find()
 
-    if (!itemsInInventory) throw new Error("Ainda não existem items cadastrados no inventário");
+    if (!itemsInInventory) throw new InvalidAction("Ainda não existem items cadastrados no inventário");
 
     const result: FindAllItemsInInventoryOutPutDto[] = itemsInInventory.map((item) => ({
       id: item.id,

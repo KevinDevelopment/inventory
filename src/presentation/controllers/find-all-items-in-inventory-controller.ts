@@ -1,5 +1,6 @@
 import { FindAllItemsUseCase } from "../../core/usecases/find-all-items/find-all-items-usecase"
 import { FindAllItemsInInventoryAdapter } from "../../infrastructure/adapters/find-all-items-adapter/find-all-items-adapter"
+import { InvalidAction } from "../../core/domain/errors"
 import { HttpResponse } from "../ports/http"
 
 export class FindAllItemsInInventoryController {
@@ -18,7 +19,7 @@ export class FindAllItemsInInventoryController {
         body: result
       }
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof InvalidAction) {
         return {
           message: error?.message,
           status: 403,

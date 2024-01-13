@@ -1,5 +1,6 @@
 import { FindItemById } from "../../repositories/inventory-repository"
 import { FindItemByIdInputDto, FindItemByIdOutPutDto } from "../../dto/find-item-by-id-dto"
+import { InvalidAction } from "../../domain/errors"
 
 export class FindItemByIdUseCase {
   private readonly findItemByid: FindItemById
@@ -14,7 +15,7 @@ export class FindItemByIdUseCase {
     }
     const itemInInventory = await this.findItemByid.findById(itemId)   
 
-    if (!itemInInventory) throw new Error("Não existe nenhum item com este id no inventário")
+    if (!itemInInventory) throw new InvalidAction("Não existe nenhum item com este id no inventário")
 
     return {
       id: itemInInventory.id,
