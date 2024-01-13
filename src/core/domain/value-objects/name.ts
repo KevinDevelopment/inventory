@@ -1,16 +1,15 @@
-import { MissingParamError } from "../errors/missing-param-error"
-import { InvalidParamError } from "../errors/invalid-param-error"
+import { InvalidAction } from "../errors"
 
 export class Name {
   private _value: string
 
   constructor(_value: string) {
     if (!_value) {
-      throw new MissingParamError("name")
+      throw new InvalidAction("O nome do item precisa ser informado")
     }
 
     if (typeof (_value) !== "string") {
-      throw new InvalidParamError("name")
+      throw new InvalidAction("O nome do item precisa ser um texto")
     }
 
     this._value = _value
