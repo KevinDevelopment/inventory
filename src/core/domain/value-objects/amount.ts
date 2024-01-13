@@ -1,4 +1,4 @@
-import { InvalidAction } from "../errors/invalid-action";
+import { InvalidAction } from "../errors";
 
 export class Amount {
   private _value: number
