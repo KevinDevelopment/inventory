@@ -21,7 +21,8 @@ export class InsertItemUseCase {
     this._findItemByName = _findItemByName
   }
 
-  async perform(input: InventoryInputDto): Promise<InventoryOutputDto> {    
+  async perform(input: InventoryInputDto): Promise<InventoryOutputDto> {
+    try {
       const inventory = new Inventory(
         new Name(input.name),
         new Amount(input.amount),
@@ -35,11 +36,25 @@ export class InsertItemUseCase {
       const itemExistsInInventory = await this._findItemByName.findByName(input.name)
 
       if (itemExistsInInventory) throw new InvalidAction("O item ja existe no invantário")
-      
+
       const insertItemInInventory = await this._insertItemInInventory.add(inventory)
+      
       return {
         message: "item cadastrado no inventário",
         status: 200
-      }   
+      }
+    } catch (error) {
+      if (error instanceof InvalidAction) {
+        return {
+          message: error.message,
+          status: 403
+        }
+      }
+
+      return {
+        message: "Erro interno do servidor",
+        status: 500
+      }
+    }
   }
 }
