@@ -13,19 +13,22 @@ export class FindItemByIdUseCase {
     const itemId: FindItemByIdInputDto = {
       id: input.id
     }
-    const itemInInventory = await this.findItemByid.findById(itemId)   
 
-    if (!itemInInventory) throw new InvalidAction("Não existe nenhum item com este id no inventário")
+    try {
+      const itemInInventory = await this.findItemByid.findById(itemId)      
 
-    return {
-      id: itemInInventory.id,
-      amount: itemInInventory.amount,
-      comments: itemInInventory.comments,
-      location: itemInInventory.location,
-      name: itemInInventory.name,
-      owner: itemInInventory.owner,
-      serialNumber: itemInInventory.serialNumber,
-      technicalSpecifications: itemInInventory.technicalSpecifications
+      return {
+        id: itemInInventory.id,
+        amount: itemInInventory.amount,
+        comments: itemInInventory.comments,
+        location: itemInInventory.location,
+        name: itemInInventory.name,
+        owner: itemInInventory.owner,
+        serialNumber: itemInInventory.serialNumber,
+        technicalSpecifications: itemInInventory.technicalSpecifications
+      };
+    } catch (error) {     
+      throw new InvalidAction("Não existe nenhum item com esse id no inventário");
     }
   }
 }
