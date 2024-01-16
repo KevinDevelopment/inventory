@@ -96,11 +96,96 @@ Exemplo de resposta:
 
 caso apareça esse status HTTP, significa que não existem nenhum item cadastrado no inventário no momento, e vocẽ será avisado com uma mensagem descritiva.
 
+```
+{
+	"messsage": "Ainda não existem items cadastrados no inventário",
+	"status": 403,
+	"data": []
+}
 
+```
  
 ### 500
 
 Caso apareça esse status, aconteceu alguma falha durante a execução do programa, porém os outros endpoints continuarão funcionando normalmente.
+
+```
+{
+	"messsage": "Erro interno do servidor",
+	"status": 500,
+	"data": []
+}
+
+```
+### GET /item/:id
+
+Esse enpoint é retorna os dados do item encontrado pelo id informado via Path Param
+
+#### Parametros
+
+id: é o id do item que esta cadastrado no inventário
+
+Exemplo 
+
+```
+http://localhost:8888/item/d8c68c68-5a2c-4898-8107-439adf71
+```
+
+#### Respostas
+
+### 200
+
+Caso apareça esse status, o item foi encontrado no inventário e você recebera os dados dele desta forma
+
+```
+{
+	"message": "Item retornado com sucesso",
+	"status": 200,
+	"data": {
+		"id": "4a02bc9e-2d18-4906-ab2e-4163e07fbf91",
+		"amount": 500,
+		"comments": "esta com um trinco na tela de uso",
+		"location": "1º andar sala 1000",
+		"name": "Notebook acer aspire 5 core i7 10th 512 ssd 8 ram 500 HDD tela ips full fdfdfdfdf",
+		"owner": "Kevin Cristhian Gomes Ferreira",
+		"serialNumber": "767787878766767887srt",
+		"technicalSpecifications": "core i3 4 nucleos ssd 256GB 8 RAM"
+	}
+}
+```
+### 403
+
+Este erro indica que houve um erro na busca, provavelmente o produto não existe no inventário
+
+```
+{
+	"message": "Item retornado com sucesso",
+	"status": 200,
+	"data": {
+		"id": "4a02bc9e-2d18-4906-ab2e-4163e07fbf91",
+		"amount": 500,
+		"comments": "esta com um trinco na tela de uso",
+		"location": "1º andar sala 1000",
+		"name": "Notebook acer aspire 5 core i7 10th 512 ssd 8 ram 500 HDD tela ips full fdfdfdfdf",
+		"owner": "Kevin Cristhian Gomes Ferreira",
+		"serialNumber": "767787878766767887srt",
+		"technicalSpecifications": "core i3 4 nucleos ssd 256GB 8 RAM"
+	}
+}
+```
+### 500
+
+Caso apareça este status, houve um erro fora do escopo da aplicação, coisas como sem internet, parametros invalidos e etc, tambem será apresentado uma mesagem de erro
+
+```
+{
+	"messsage": "Erro interno do servidor",
+	"status": 500,
+	"data": []
+}
+
+```
+
 
 
 
