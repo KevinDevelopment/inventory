@@ -28,7 +28,7 @@ export class FindItemByIdUseCase {
         technicalSpecifications: itemInInventory.technicalSpecifications
       };
     } catch (error) {     
-      throw new InvalidAction("Não existe nenhum item com esse id no inventário");
+      throw new InvalidAction("Não existe nenhum item com esse id no inventário")
     }
   }
 }

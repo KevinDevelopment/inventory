@@ -1,3 +1,4 @@
+import { InvalidAction } from "../../../core/domain/errors"
 import { FindItemByIdInputDto, FindItemByIdOutPutDto } from "../../../core/dto/find-item-by-id-dto"
 import { FindItemById } from "../../../core/repositories/inventory-repository"
 import { makePrismaClient } from "../../factories/prisma"
@@ -12,7 +13,7 @@ export class FindItemByIdAdapter implements FindItemById {
       where: {
         id: itemId.id
       }
-    })
+    })    
 
     return {
       id: findItemById!.id,
