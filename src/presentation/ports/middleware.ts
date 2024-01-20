@@ -1,7 +1,10 @@
+export interface Next {
+  (): void
+}
+
 export interface HttpResponse {
   message: string
-  status: number
-  body: any
+  status: number 
 }
 
 export interface HttpRequest {

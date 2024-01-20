@@ -7,11 +7,13 @@ import { makeInsertItemController } from "../factories/insert"
 import { makeFindAllItemsController } from "../factories/find-all"
 import { makeFindItemByIdController } from "../factories/find-by-id"
 import { makeIncrementController } from "../factories/increment-item"
+import { AuthenticationMiddleware } from "../middlewares/authentication-middlware"
+import { authenticationMiddlewareAdapter } from "../adapters/express-middleware-adapter"
 const router = Router()
 
-router.post("/item", adaptInsertItemController(makeInsertItemController()))
-router.get("/items", adapterFindAllItemsController(makeFindAllItemsController()))
-router.get("/item/:id", adapterFindItemByIdController(makeFindItemByIdController()))
-router.patch("/item", adapterIncrementItemInInventoryController(makeIncrementController()))
+router.post("/item", authenticationMiddlewareAdapter(AuthenticationMiddleware), adaptInsertItemController(makeInsertItemController()))
+router.get("/items", authenticationMiddlewareAdapter(AuthenticationMiddleware), adapterFindAllItemsController(makeFindAllItemsController()))
+router.get("/item/:id", authenticationMiddlewareAdapter(AuthenticationMiddleware), adapterFindItemByIdController(makeFindItemByIdController()))
+router.patch("/item", authenticationMiddlewareAdapter(AuthenticationMiddleware), adapterIncrementItemInInventoryController(makeIncrementController()))
 
 export { router }
