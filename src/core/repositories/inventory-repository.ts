@@ -12,7 +12,7 @@ export interface FindAllItemsInInventory {
 }
 
 export interface FindItemById {
-  findById(id: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto>
+  findById(input: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto>
 }
 
 export interface FindItemByName {

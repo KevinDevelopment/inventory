@@ -69,6 +69,6 @@ describe("FindAllItemsUseCase", () => {
 
     const input = new FindAllItemsInventoryAdapterFake()
     const findAllItems = new FindAllItemsUseCase(input)
-    await expect(findAllItems.perform()).rejects.toThrowError(new InvalidAction("Ainda não existem items cadastrados no inventário"));
+    await expect(() => findAllItems.perform()).rejects.toThrowError(new InvalidAction("Ainda não existem items cadastrados no inventário"));
   })
 })
