@@ -6,7 +6,7 @@ describe("FindAllItemInInventoryController E2E", () => {
   test("/ITEMS should return an array of objects when token is provided",async () => {
     const response = await supertest(server)
     .get("/items")
-    .set("authorization", `Bearer ${process.env.INTERNAL_LOCAL_TOKEN}`)
+    .set("authorization", `Bearer ${process.env.INTERNAL_LOCAL_TOKEN}`)    
 
     const result = JSON.parse(response.text)
     console.log(result)

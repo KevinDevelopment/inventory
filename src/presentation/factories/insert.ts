@@ -1,4 +1,4 @@
-import { InsertItemController } from "../controllers/insert-item-controller"
+import { InsertItemController } from "../controllers/insert-item/insert-item-controller"
 
 export const makeInsertItemController = (): InsertItemController => {
   const insertItemController = new InsertItemController()
