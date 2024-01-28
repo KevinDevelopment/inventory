@@ -1,4 +1,4 @@
-import { describe, test, expect, vitest } from "vitest"
+import { describe, test, expect } from "vitest"
 import { FindAllItemsUseCase } from "./find-all-items-usecase"
 import { FindAllItemsInInventory } from "../../repositories/inventory-repository"
 import { FindAllItemsInInventoryOutPutDto } from "../../dto/find-all-items-dto"
@@ -11,6 +11,16 @@ describe("FindAllItemsUseCase", () => {
         return [
           {
             id: "valid_id",
+            technicalSpecifications: "valid_especifications",
+            amount: 300,
+            comments: "valid_coments",
+            location: "valid_location",
+            name: "valid_name",
+            owner: "valid_owner",
+            serialNumber: "valid_serial_number",
+          },
+          {
+            id: "valid_id_two",
             technicalSpecifications: "valid_especifications",
             amount: 300,
             comments: "valid_coments",
@@ -36,11 +46,21 @@ describe("FindAllItemsUseCase", () => {
         name: "valid_name",
         owner: "valid_owner",
         serialNumber: "valid_serial_number",
+      },
+      {
+        id: "valid_id_two",
+        technicalSpecifications: "valid_especifications",
+        amount: 300,
+        comments: "valid_coments",
+        location: "valid_location",
+        name: "valid_name",
+        owner: "valid_owner",
+        serialNumber: "valid_serial_number",
       }
     ])
   })
 
-  test.only("Should return an exception if items in inventory empty", async () => {
+  test("Should return an exception if items in inventory empty", async () => {
     class FindAllItemsInventoryAdapterFake implements FindAllItemsInInventory {
       async find(): Promise<FindAllItemsInInventoryOutPutDto[]> {
         return []
@@ -48,7 +68,7 @@ describe("FindAllItemsUseCase", () => {
     }
 
     const input = new FindAllItemsInventoryAdapterFake()
-    const findAllItems = new FindAllItemsUseCase(input)    
+    const findAllItems = new FindAllItemsUseCase(input)
     await expect(findAllItems.perform()).rejects.toThrowError(new InvalidAction("Ainda não existem items cadastrados no inventário"));
   })
 })
