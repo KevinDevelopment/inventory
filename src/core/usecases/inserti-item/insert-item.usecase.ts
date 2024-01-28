@@ -22,39 +22,26 @@ export class InsertItemUseCase {
   }
 
   async perform(input: InventoryInputDto): Promise<InventoryOutputDto> {
-    try {
-      const inventory = new Inventory(
-        new Name(input.name),
-        new Amount(input.amount),
-        new SerialNumber(input.serialNumber),
-        new TechnicalSpecifications(input.technicalSpecifications),
-        new Owner(input.owner),
-        new Location(input.location),
-        new Comments(input.comments)
-      )
 
-      const itemExistsInInventory = await this._findItemByName.findByName(input.name)
+    const inventory = new Inventory(
+      new Name(input.name),
+      new Amount(input.amount),
+      new SerialNumber(input.serialNumber),
+      new TechnicalSpecifications(input.technicalSpecifications),
+      new Owner(input.owner),
+      new Location(input.location),
+      new Comments(input.comments)
+    )
 
-      if (itemExistsInInventory) throw new InvalidAction("O item ja existe no inventário")
+    const itemExistsInInventory = await this._findItemByName.findByName(input.name)
 
-      const insertItemInInventory = await this._insertItemInInventory.add(inventory)
+    if (itemExistsInInventory) throw new InvalidAction("O item ja existe no inventário")
 
-      return {
-        message: "item cadastrado no inventário",
-        status: 200
-      }
-    } catch (error) {
-      if (error instanceof InvalidAction) {
-        return {
-          message: error.message,
-          status: 403
-        }
-      }
+    const insertItemInInventory = await this._insertItemInInventory.add(inventory)
 
-      return {
-        message: "Erro interno do servidor",
-        status: 500
-      }
+    return {
+      message: "item cadastrado no inventário",
+      status: 200
     }
   }
 }
