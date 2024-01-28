@@ -18,7 +18,7 @@ export const adaptInsertItemController = (controller: InsertItemController) => {
 export const adapterFindAllItemsController = (controller: FindAllItemsInInventoryController) => {
   return async (req: Request, res: Response) => {
     const httpResponse: HttpResponse = await controller.handle()
-    res.status(httpResponse.status).json({ messsage: httpResponse.message, status: httpResponse.status, data: httpResponse.body })
+    res.status(httpResponse.status).json({ message: httpResponse.message, status: httpResponse.status, data: httpResponse.body })
   }
 }
 
