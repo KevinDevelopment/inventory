@@ -1,5 +1,5 @@
 import { InsertItemController } from "../controllers/insert-item-controller"
-import { FindAllItemsInInventoryController } from "../controllers/find-all-items-in-inventory-controller"
+import { FindAllItemsInInventoryController } from "../controllers/find-all-items/find-all-items-in-inventory-controller"
 import { IncrementItemInInventoryController } from "../controllers/increment-item-in-inventory-controller"
 import { FindItemByIdController } from "../controllers/find-item-by-id-controller"
 import { Request, Response } from "express"

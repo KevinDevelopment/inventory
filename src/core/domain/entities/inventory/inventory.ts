@@ -6,7 +6,7 @@ import { Owner } from "../../value-objects/owner"
 import { Location } from "../../value-objects/location"
 import { Comments } from "../../value-objects/comments"
 
-export class Inventory {  
+export class Inventory {
   private _name: Name
   private _amount: Amount
   private _serialNumber: SerialNumber
@@ -16,7 +16,7 @@ export class Inventory {
   private _comments: Comments
 
   constructor
-    (      
+    (
       _name: Name,
       _amount: Amount,
       _serialNumber: SerialNumber,
@@ -24,7 +24,7 @@ export class Inventory {
       _owner: Owner,
       _location: Location,
       _comments: Comments
-    ) {    
+    ) {
     this._name = _name
     this._amount = _amount
     this._serialNumber = _serialNumber
@@ -32,7 +32,18 @@ export class Inventory {
     this._owner = _owner
     this._location = _location
     this._comments = _comments
-  } 
+  }
+
+  public static create(name: string, amount: number, serialNumber: string, technicalSpecifications: string, owner: string, location: string, comments: string) {
+    return new Inventory(
+      new Name(name),
+      new Amount(amount),
+      new SerialNumber(serialNumber),
+      new TechnicalSpecifications(technicalSpecifications),
+      new Owner(owner),
+      new Location(location),
+      new Comments(comments))
+  }
 
   public get name(): Name {
     return this._name
@@ -60,8 +71,8 @@ export class Inventory {
 
   public get comments(): Comments {
     return this._comments
-  } 
-  
+  }
+
 }
 
 

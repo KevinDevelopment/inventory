@@ -1,4 +1,4 @@
-import { FindAllItemsInInventoryController } from "../controllers/find-all-items-in-inventory-controller"
+import { FindAllItemsInInventoryController } from "../controllers/find-all-items/find-all-items-in-inventory-controller"
 
 export const makeFindAllItemsController = (): FindAllItemsInInventoryController => {
   const findAllItemsController = new FindAllItemsInInventoryController()

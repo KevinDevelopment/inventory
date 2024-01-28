@@ -1,7 +1,7 @@
-import { FindAllItemsUseCase } from "../../core/usecases/find-all-items/find-all-items-usecase"
-import { FindAllItemsInInventoryAdapter } from "../../infrastructure/adapters/find-all-items-adapter/find-all-items-adapter"
-import { InvalidAction } from "../../core/domain/errors"
-import { HttpResponse } from "../ports/http"
+import { FindAllItemsUseCase } from "../../../core/usecases/find-all-items/find-all-items-usecase"
+import { FindAllItemsInInventoryAdapter } from "../../../infrastructure/adapters/find-all-items-adapter/find-all-items-adapter"
+import { InvalidAction } from "../../../core/domain/errors"
+import { HttpResponse } from "../../ports/http"
 
 export class FindAllItemsInInventoryController {
   private readonly findAllItems: FindAllItemsUseCase
