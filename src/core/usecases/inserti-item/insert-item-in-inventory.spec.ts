@@ -71,7 +71,7 @@ describe("InsertItemInInventoryUseCase", () => {
     })
   })
 
-  test("Should return an erro is item exist in inventory", async () => {
+  test("Should return an error if item exists in inventory", async () => {
     class FindItemInInventoryByName implements FindItemByName {
       async findByName(name: string): Promise<boolean> {
         const allItemsInventory = [
