@@ -1,7 +1,7 @@
-import { FindItemByIdUseCase } from "../../core/usecases/find-item-by-id/find-item-by-id"
-import { FindItemByIdAdapter } from "../../infrastructure/adapters/find-item-by-id/find-item-by-id-adapter"
-import { InvalidAction } from "../../core/domain/errors"
-import { HttpRequest, HttpResponse } from "../ports/http"
+import { FindItemByIdUseCase } from "../../../core/usecases/find-item-by-id/find-item-by-id"
+import { FindItemByIdAdapter } from "../../../infrastructure/adapters/find-item-by-id/find-item-by-id-adapter"
+import { InvalidAction } from "../../../core/domain/errors"
+import { HttpRequest, HttpResponse } from "../../ports/http"
 
 export class FindItemByIdController {
   private readonly findItemById: FindItemByIdUseCase
@@ -13,7 +13,7 @@ export class FindItemByIdController {
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const input = {
-        id: httpRequest.body.id
+        id: httpRequest.params.id
       }
       const itemById = await this.findItemById.perform(input)
       return {
