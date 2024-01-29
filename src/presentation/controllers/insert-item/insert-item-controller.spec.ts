@@ -11,7 +11,7 @@ describe("InserItemInInventoryControler E2E", () => {
       .send(
         {
           id: randomUUID(),
-          name: "Kevin Fereiraaa",
+          name: `Kevin ${Math.random()}`,
           amount: 400,
           comments: "valid_comments",
           location: "valid_location",
@@ -24,5 +24,6 @@ describe("InserItemInInventoryControler E2E", () => {
     const output = JSON.parse(response.text)
     console.log(output)
     expect(output.status).toBe(200)
+    expect(output.message).toBe("item cadastrado no inventário")
   })
 })
