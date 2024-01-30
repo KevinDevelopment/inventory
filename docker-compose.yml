@@ -3,17 +3,13 @@
   services:
     node:
       build: .
-      container_name: inventory-server
-      command: "npm run dev"
-      working_dir: /home/node/app
+      container_name: inventory-server      
       environment:
         - NODE_ENV=production        
       depends_on:
         - db
       networks:
-        - inventory-network
-      expose:
-        - 8888
+        - inventory-network      
       ports:
         - "8888:8888"
 

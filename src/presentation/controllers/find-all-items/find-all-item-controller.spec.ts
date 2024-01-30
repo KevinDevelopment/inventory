@@ -1,10 +1,10 @@
-import { describe, test, expect } from "vitest"
+import { describe, test, expect, beforeAll, afterAll } from "vitest"
 import supertest from "supertest"
-import { server } from "../../web/express"
+import { app } from "../../web/express"
 
 describe("FindAllItemInInventoryController E2E", () => {
   test("/ITEMS should return an array of objects when token is provided", async () => {
-    const response = await supertest(server)
+    const response = await supertest(app)
       .get("/items")
       .set("authorization", `Bearer ${process.env.INTERNAL_LOCAL_TOKEN}`)
 
