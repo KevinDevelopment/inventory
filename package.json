@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest ",
-    "dev": "ts-node-dev --respawn --transpile-only src/presentation/web/express.ts",
+    "test": "vitest",
+    "dev": "ts-node-dev --respawn --transpile-only  src/presentation/web/express.ts",
     "coverage": "vitest run --coverage"
   },
   "keywords": [],
@@ -16,6 +16,7 @@
     "@types/axios": "^0.14.0",
     "@types/supertest": "^6.0.2",
     "axios": "^1.6.7",
+    "dotenv": "^16.4.1",
     "git-commit-msg-linter": "^5.0.6",
     "supertest": "^6.3.4",
     "uuid": "^9.0.1"

@@ -26,7 +26,7 @@ export class FindAllItemsInInventoryController {
           body: []
         }
       }
-
+      console.log(error)
       return {
         message: "Erro interno do servidor",
         status: 500,
