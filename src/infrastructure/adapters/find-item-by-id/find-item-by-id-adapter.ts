@@ -4,7 +4,7 @@ import { FindItemById } from "../../../core/repositories/inventory-repository"
 import { makePrismaClient } from "../../factories/prisma"
 
 export class FindItemByIdAdapter implements FindItemById {
-  async findById(input: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto> {
+  async handle(input: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto> {
     const itemId = {
       id: input.id
     }

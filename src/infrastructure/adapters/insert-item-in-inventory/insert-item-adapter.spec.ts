@@ -26,8 +26,8 @@ describe("MySqlAdapter", () => {
       new Location("input.name"),
       new Comments("input.name")
     )
-    vitest.spyOn(sut, 'add').mockReturnValueOnce(Promise.resolve())
-    const insertItem = await sut.add(inventory)
+    vitest.spyOn(sut, 'handle').mockReturnValueOnce(Promise.resolve())
+    const insertItem = await sut.handle(inventory)
     expect(insertItem).toBe(undefined)
   })
 })

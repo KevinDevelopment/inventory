@@ -11,7 +11,7 @@ export const adaptInsertItemController = (controller: InsertItemController) => {
       body: req.body
     }
     const HttpResponse = await controller.handler(httpRequest)
-    res.status(HttpResponse.status).json(HttpResponse.body)
+    res.status(HttpResponse.status).json({ body: HttpResponse.body, message: HttpResponse.message })
   }
 }
 

@@ -7,7 +7,7 @@ import { InvalidAction } from "../../domain/errors"
 describe("FindItemByIdUseCase", () => {
   test("Should return an item in inventory if id exists", async () => {
     class FindItemByIdFake implements FindItemById {
-      async findById(input: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto> {
+      async handle(input: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto> {
         const itemInInventory = [
           {
             id: "valid_id_one",
@@ -57,7 +57,7 @@ describe("FindItemByIdUseCase", () => {
 
   test("Should return an error if item not exists", async () => {
     class FindItemByIdFake implements FindItemById {
-      async findById(input: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto> {
+      async handle(input: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto> {
         const itemInInventory = [
           {
             id: "valid_id_one",

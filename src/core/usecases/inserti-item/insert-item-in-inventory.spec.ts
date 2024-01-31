@@ -8,7 +8,7 @@ import { InvalidAction } from "../../domain/errors"
 describe("InsertItemInInventoryUseCase", () => {
   test("Should return status 200 and an message if insert in inventory succesfully", async () => {
     class FindItemInInventoryByName implements FindItemByName {
-      async findByName(name: string): Promise<boolean> {
+      async handle(name: string): Promise<boolean> {
         const allItemsInventory = [
           {
             id: "valid_id",
@@ -39,7 +39,7 @@ describe("InsertItemInInventoryUseCase", () => {
     }
 
     class InsertItemInInventoryFake implements InsertItemInInventory {
-      async add(inventory: Inventory): Promise<void> {
+      async handle(inventory: Inventory): Promise<void> {
         const inserItem = {
           technicalSpecifications: inventory.technicalSpecifications,
           amount: inventory.amount,
@@ -73,7 +73,7 @@ describe("InsertItemInInventoryUseCase", () => {
 
   test("Should return an error if item exists in inventory", async () => {
     class FindItemInInventoryByName implements FindItemByName {
-      async findByName(name: string): Promise<boolean> {
+      async handle(name: string): Promise<boolean> {
         const allItemsInventory = [
           {
             id: "valid_id",
@@ -104,7 +104,7 @@ describe("InsertItemInInventoryUseCase", () => {
     }
 
     class InsertItemInInventoryFake implements InsertItemInInventory {
-      async add(inventory: Inventory): Promise<void> {
+      async handle(inventory: Inventory): Promise<void> {
         const inserItem = {
           technicalSpecifications: inventory.technicalSpecifications,
           amount: inventory.amount,

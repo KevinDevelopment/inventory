@@ -13,7 +13,7 @@ export class IncreaseItemInInventoryUseCase {
       id: input.id,
       amount: input.amount
     }
-    const increaseItem = await this.incrementItem.increment(item)
+    const increaseItem = await this.incrementItem.handle(item)
 
     return {
       amount: increaseItem.amount,

@@ -4,21 +4,21 @@ import { FindItemByIdInputDto, FindItemByIdOutPutDto } from "../dto/find-item-by
 import { IncreaseItemInputDto, IncreaseItemOutputDto } from "../dto/increment-item-dto"
 
 export interface InsertItemInInventory {
-  add(inventory: Inventory): Promise<void>
+  handle(inventory: Inventory): Promise<void>
 }
 
 export interface FindAllItemsInInventory {
-  find(): Promise<FindAllItemsInInventoryOutPutDto[]>;
+  handle(): Promise<FindAllItemsInInventoryOutPutDto[]>;
 }
 
 export interface FindItemById {
-  findById(input: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto>
+  handle(input: FindItemByIdInputDto): Promise<FindItemByIdOutPutDto>
 }
 
 export interface FindItemByName {
-  findByName(name: string): Promise<boolean>
+  handle(name: string): Promise<boolean>
 }
 
 export interface IncrementItemInInventory {
-  increment(item: IncreaseItemInputDto): Promise<IncreaseItemOutputDto>
+  handle(item: IncreaseItemInputDto): Promise<IncreaseItemOutputDto>
 }

@@ -4,7 +4,7 @@ import { makePrismaClient } from "../../factories/prisma";
 
 
 export class IncreaseItemInInventoryAdapter implements IncrementItemInInventory {
-  async increment(item: IncreaseItemInputDto): Promise<IncreaseItemOutputDto> {
+  async handle(item: IncreaseItemInputDto): Promise<IncreaseItemOutputDto> {
     const prisma = makePrismaClient()
 
     const incrementItem = await prisma.inventory.update({

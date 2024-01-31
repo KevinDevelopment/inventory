@@ -28,8 +28,8 @@ describe("IncreaseItemInInventoryAdapter", () => {
       serialNumber: "valid_serial_number",
       technicalSpecifications: "valid_specifications"
     }
-    vitest.spyOn(sut, 'increment').mockReturnValueOnce(Promise.resolve(objectExists))
-    const incrementInInventory =  await sut.increment(incrementNumber)
+    vitest.spyOn(sut, 'handle').mockReturnValueOnce(Promise.resolve(objectExists))
+    const incrementInInventory =  await sut.handle(incrementNumber)
     expect(incrementInInventory.amount).toBe(300)
   })
 })

@@ -15,7 +15,7 @@ const makeSut = (): SutTypes => {
 describe("FindAllItemsInInventoryAdapter", () => {
   test("should return an array of items", async () => {
     const { sut } = makeSut()
-    const findAll = await sut.find()
+    const findAll = await sut.handle()
     expect(Array.isArray(findAll)).toBe(true)    
   })
 })

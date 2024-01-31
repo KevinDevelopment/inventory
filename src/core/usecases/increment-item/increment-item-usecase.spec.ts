@@ -6,7 +6,7 @@ import { IncreaseItemInputDto, IncreaseItemOutputDto } from "../../dto/increment
 describe("IncrementItemUseCase", () => {
   test("Should return an item when amount is added", async () => {
     class incrementeItemInInventoryFake implements IncrementItemInInventory {
-      async increment(item: IncreaseItemInputDto): Promise<IncreaseItemOutputDto> {
+      async handle(item: IncreaseItemInputDto): Promise<IncreaseItemOutputDto> {
         const itemInInventory = [
           {
             id: item.id,

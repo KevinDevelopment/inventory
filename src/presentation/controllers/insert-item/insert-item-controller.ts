@@ -29,7 +29,7 @@ export class InsertItemController {
         status: insertItem.status,
         body: insertItem
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
       if (error instanceof InvalidAction) {
         return {
@@ -37,10 +37,10 @@ export class InsertItemController {
           status: 403,
           body: []
         }
-      }
+      }    
 
       return {
-        message: "Erro interno do servidor",
+        message: (error as Error).message,
         status: 500,
         body: []
       }

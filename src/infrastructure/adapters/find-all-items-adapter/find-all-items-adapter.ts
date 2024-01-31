@@ -3,7 +3,7 @@ import { FindAllItemsInInventory } from "../../../core/repositories/inventory-re
 import { makePrismaClient } from "../../factories/prisma";
 
 export class FindAllItemsInInventoryAdapter implements FindAllItemsInInventory {
-  async find(): Promise<FindAllItemsInInventoryOutPutDto[]> {
+  async handle(): Promise<FindAllItemsInInventoryOutPutDto[]> {
     const prisma = makePrismaClient()
     const returnAllItemsInInventory = await prisma.inventory.findMany()   
 

@@ -10,7 +10,7 @@ export class FindAllItemsUseCase {
   }
 
   async perform(): Promise<FindAllItemsInInventoryOutPutDto[]> {
-    const itemsInInventory = await this.findAllItemsInInventory.find()
+    const itemsInInventory = await this.findAllItemsInInventory.handle()
 
     if (itemsInInventory.length <= 0) throw new InvalidAction("Ainda não existem items cadastrados no inventário");
 

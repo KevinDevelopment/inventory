@@ -7,7 +7,7 @@ import { InvalidAction } from "../../domain/errors"
 describe("FindAllItemsUseCase", () => {
   test("Should return all items in inventory", async () => {
     class FindAllItemsInventoryAdapterFake implements FindAllItemsInInventory {
-      async find(): Promise<FindAllItemsInInventoryOutPutDto[]> {
+      async handle(): Promise<FindAllItemsInInventoryOutPutDto[]> {
         return [
           {
             id: "valid_id",
@@ -62,7 +62,7 @@ describe("FindAllItemsUseCase", () => {
 
   test("Should return an exception if items in inventory empty", async () => {
     class FindAllItemsInventoryAdapterFake implements FindAllItemsInInventory {
-      async find(): Promise<FindAllItemsInInventoryOutPutDto[]> {
+      async handle(): Promise<FindAllItemsInInventoryOutPutDto[]> {
         return []
       }
     }

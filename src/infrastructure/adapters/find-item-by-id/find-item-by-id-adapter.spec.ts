@@ -19,7 +19,7 @@ describe("FindItemByIdAdapter", () => {
     const inputDto = {
       id: "ig9f8gfg8f9g8fg9fg8"
     }
-    expect(() => sut.findById(inputDto)).rejects.toThrow()
+    expect(() => sut.handle(inputDto)).rejects.toThrow()
   })
 
   test("should return a value if ID is valid", async () => {
@@ -37,8 +37,8 @@ describe("FindItemByIdAdapter", () => {
       serialNumber: "valid_serial_number",
       technicalSpecifications: "valid_specifications"
     }    
-    const mockData = vitest.spyOn(sut, 'findById').mockReturnValueOnce(Promise.resolve(returnValues))  
-    const result = await sut.findById(inputDto) 
+    const mockData = vitest.spyOn(sut, 'handle').mockReturnValueOnce(Promise.resolve(returnValues))  
+    const result = await sut.handle(inputDto) 
     expect(mockData).toHaveBeenCalled() 
     expect(result).toEqual(returnValues);
   })

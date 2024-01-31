@@ -14,7 +14,7 @@ export class FindItemByIdUseCase {
       id: input.id
     }
 
-    const itemInInventory = await this.findItemByid.findById(itemId)
+    const itemInInventory = await this.findItemByid.handle(itemId)
 
     if (!itemInInventory) throw new InvalidAction("Não existe nenhum item com esse id no inventário")
 
