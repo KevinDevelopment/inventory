@@ -28,7 +28,7 @@ export class InsertItemUseCase {
 
     const itemExistsInInventory = await this._findItemByName.handle(input.name)
     if (itemExistsInInventory) throw new InvalidAction("O item ja existe no inventário")
-    const insertItemInInventory = await this._insertItemInInventory.handle(inventory)
+    await this._insertItemInInventory.handle(inventory)
 
     return {
       message: "item cadastrado no inventário",
